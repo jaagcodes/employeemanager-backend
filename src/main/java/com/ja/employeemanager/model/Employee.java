@@ -1,5 +1,6 @@
 package com.ja.employeemanager.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -38,6 +39,15 @@ public class Employee {
     private String imageUrl;
     @Column(nullable = false, updatable = false)
     private String employeeCode;
+
+    @NotNull
+    private Integer yearsOfExperience;
+
+    private String seniority;
+    
+    private Double anualSalary;
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -23,7 +23,19 @@ public class EmployeeService {
 
     public Employee addEmployee(Employee employee){
         employee.setEmployeeCode(UUID.randomUUID().toString());
+        employee.setSeniority(determineSeniority(employee).name());
         return employeeRepo.save(employee);
+    }
+
+    public seniorityEnum determineSeniority(Employee employee){
+        Integer yearsOfExperience = employee.getYearsOfExperience();
+        if(yearsOfExperience <= 2){
+            return seniorityEnum.JUNIOR;
+        }
+        if(yearsOfExperience <= 4){
+            return seniorityEnum.MIDDLE;
+        }
+        return seniorityEnum.SENIOR;
     }
 
     public List<Employee> findAllEmployees(){
